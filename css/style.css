@@ -88,6 +88,54 @@ header .top-nav .search button{
     cursor: pointer;
 }
 
+header .top-nav .wishlist_header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+header .top-nav .wishlist_header i {
+    color: var(--dark-color);
+    font-size: 20px;
+    border: 1px solid var(--border-color);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+header .top-nav .wishlist_header i:hover {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+header .top-nav .wishlist_header .icon_wishlist {
+    position: relative;
+}
+
+header .top-nav .wishlist_header .count_item {
+    position: absolute;
+    background: var(--main-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 13px;
+    top: -5px;
+    right: 0px;
+    color: var(--dark-color);
+    border: 1px solid var(--border-color);
+}
+
+header .top-nav .wishlist_header .tottal_items p {
+    margin-bottom: 8px;
+}
+
+
 header .top-nav .cart_header{
     display: flex;
     gap: 10px;
@@ -1344,122 +1392,186 @@ header .links ul .btn_close_menu{
 
 
 /* Checkout Page */
+/* Checkout Section */
+.checkout {
+    padding: 3rem 0;
+    background-color: #f9f9f9;
+}
 
-.checkout{
-    margin: 50px 0;
-}
-.checkout .container{
+.checkout-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
-.checkout form{
-    width: 45%;
+
+.checkout-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
-.checkout form h2{
-    padding: 10px 20px;
-    background: var(--main-color);
-    text-transform: capitalize;
+
+
+
+
+/* Left Side: Delivery Address and Coupon Code */
+.left-section {
+    flex: 1;
+    min-width: 300px;
 }
-.checkout form .address,
-.checkout form .coupon{
-    background: #fff;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    overflow: hidden;
+
+.address,
+.coupon {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
 }
-.checkout form .inputs{
+
+.address h2,
+.coupon h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.inputs {
     display: flex;
     flex-direction: column;
-    padding: 15px 20px;
+    gap: 1rem;
 }
-.checkout form .inputs label{
-    color: var(--dark-color);
-    font-size: 14px;
-    text-transform: capitalize;
+
+.inputs label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
 }
-.checkout form .inputs input{
-    margin: 5px 0 20px;
-    padding: 12px 10px;
+
+.inputs input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
     outline: none;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    transition: 0.3s ease-in-out;
-}
-.checkout form .inputs input:focus{
-    border-color: var(--main-color);
+    transition: border-color 0.3s ease;
 }
 
-
-
-.checkout .ordersummary{
-    width: 45%;
-    background: #fff;
-    padding: 0 20px;
+.inputs input:focus {
+    border-color: #fcb700;
 }
-.checkout .ordersummary h1{
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 0;
-    margin-bottom: 20px;
+
+/* Right Side: Order Summary */
+.checkout .ordersummary {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 400px; /* عرض أساسي للـ Order Summary */
+    max-width: 500px; /* أقصى عرض */
+    height: auto; /* الطول يتكيف مع المحتوى */
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.checkout .ordersummary .items .item_cart{
+
+.ordersummary h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.items {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-.checkout .ordersummary .items .item_cart img{
-    width: 150px;
-}
-.checkout .ordersummary .items .item_cart h4{
-    color: var(--parg-color);
-    margin-bottom: 20px
-}
-.checkout .ordersummary .items .item_cart p{
-    color: var(--dark-color);
-    font-size: 18px;
+    flex-direction: column;
+    gap: 1.5rem; /* زيادة المسافة بين المنتجات */
 }
 
-.checkout .ordersummary .total{
-    margin-bottom: 20px;
+.item_cart {
     display: flex;
+    gap: 1.5rem; /* زيادة المسافة بين الصورة والمحتوى */
     align-items: center;
+}
+
+.item_cart img {
+    width: 100px; /* تكبير عرض الصورة */
+    height: 100px; /* تكبير ارتفاع الصورة */
+    object-fit: cover;
+    border-radius: 0.3rem;
+}
+
+.item_cart .content {
+    flex: 1;
+}
+
+.item_cart h4 {
+    font-size: 1.2rem; /* تكبير حجم اسم المنتج */
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.item_cart .price_cart {
+    font-size: 1.1rem; /* تكبير حجم السعر */
+    color: #555;
+}
+
+.item_cart .price_cart span {
+    font-weight: 600;
+    color: #fcb700;
+}
+
+.total {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #ddd;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
 }
 
-.checkout .ordersummary .total p{
-    font-size: 30px; 
-    font-weight: bold;
-    color: var(--dark-color);
-    text-transform: capitalize;
+.total span {
+    color: #fcb700;
 }
-.checkout .ordersummary .total span{
-    font-weight: bold;
-    font-size: 25px;
-    color: var(--dark-color);
+
+.button_div {
+    margin-top: 1.5rem;
+    text-align: center;
 }
-.checkout .ordersummary .button_div{
-    border-top: 1px solid var(--border-color);
-    padding: 30px 0;
-}
-.checkout .ordersummary .button_div button{
-    width: 100%;
-    background: var(--main-color);
-    color: var(--dark-color);
-    border: 2px solid var(--main-color);
-    padding: 15px 0;
-    outline: none;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
+
+.button_div button {
+    background-color: #fcb700;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-.checkout .ordersummary .button_div button:hover{
-    background: transparent;
-    color: var(--main-color);
+    transition: background-color 0.3s ease;
 }
 
+.button_div button:hover {
+    background-color: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .left-section {
+        order: 2;
+    }
+    .ordersummary {
+        order: 1;
+        flex-basis: 100%; /* ياخد العرض كله على الشاشات الصغيرة */
+        max-width: 100%;
+    }
+}
 
 
 /* responsive checkout page */
